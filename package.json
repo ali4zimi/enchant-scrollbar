@@ -3,14 +3,15 @@
   "version": "0.0.1",
   "description": "A custom scrollbar for your web app",
   "main": "dist/index.js",
-  "module": "dist/index.js",
+  "source": "playground/index.html",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "start": "serve",
+    "dev": "parcel",
+    "build": "parcel build ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -23,7 +24,11 @@
   "author": "Ali Azimi",
   "license": "MIT",
   "devDependencies": {
-    "serve": "^14.2.1",
+    "@parcel/packager-ts": "^2.9.3",
+    "@parcel/transformer-typescript-types": "^2.9.3",
+    "parcel": "^2.9.3",
+    "postcss": "^8.4.29",
+    "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2"
   }
 }
