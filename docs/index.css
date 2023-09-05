@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-slate-800 font-sans;
+}
+.root {
+  @apply text-slate-50;
+}
+
+p {
+  @apply text-[1.2rem] text-slate-400;
+}
+
+h1 {
+  @apply text-[1.8rem] font-bold mt-2 scroll-mt-16;
+}
+
+h2 {
+  @apply text-[1.6rem] font-bold mt-2 scroll-mt-16;
+}
+
+a {
+  @apply text-[1.2rem] text-slate-400 hover:text-slate-300;
+}
+
+
+.doc > h1:not(:first-child) {
+  @apply mt-10
+}
