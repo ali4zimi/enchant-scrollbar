@@ -59,4 +59,4 @@ Any contributions you make are greatly appreciated.
 5. Open a Pull Request
 
 ### License
-This project is licensed under the MIT License - see the <a href="https://github.com/ali4zimi/enchant-scrollbar/LICENSE.md">LICENSE.md</a> file for details
+This project is licensed under the MIT License - see the <a href="https://github.com/ali4zimi/enchant-scrollbar/blob/main/LICENSE.md">LICENSE.md</a> file for details
