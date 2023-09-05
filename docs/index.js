@@ -1,4 +1,4 @@
-import { EnchantScrollbar } from '../src/index'
+import { EnchantScrollbar } from './.server/index.mjs'
 
 const el = document.getElementById('scrollable');
 const enchantScrollbar = new EnchantScrollbar();
