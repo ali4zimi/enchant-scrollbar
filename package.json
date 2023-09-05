@@ -4,6 +4,8 @@
   "description": "A custom scrollbar for your web app",
   "author": "Ali Azimi",
   "license": "MIT",
+  "repository": "ali4zimi/enchant-scrollbar",
+  "homepage": "https://github.com/ali4zimi/enchant-scrollbar#readme",
   "main": "dist/index.js",
   "source": "docs/index.html",
   "module": "dist/index.mjs",
@@ -12,8 +14,10 @@
     "dist"
   ],
   "scripts": {
-    "dev": "parcel -p 3000",
-    "build": "parcel build ./src/index.ts",
+    "serve": "serve ./docs -l 3000",
+    "start": "npm run tailwind && cp ./dist/* ./docs/.server && npm run serve",
+    "build": "tsup src/index.ts --format cjs,esm --dts --minify --clean",
+    "tailwind": "tailwindcss -i ./docs/style.css -o ./.server/main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -24,13 +28,11 @@
     "scrollbar"
   ],
   "devDependencies": {
-    "@parcel/packager-ts": "^2.9.3",
-    "@parcel/transformer-typescript-types": "^2.9.3",
     "@tailwindcss/typography": "^0.5.9",
-    "highlight.js": "^11.8.0",
-    "parcel": "^2.9.3",
     "postcss": "^8.4.29",
+    "serve": "^14.2.1",
     "tailwindcss": "^3.3.3",
+    "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   }
 }
