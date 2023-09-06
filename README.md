@@ -1,4 +1,11 @@
 # Enchant Scrollbar
+[![npm version](https://badge.fury.io/js/enchant-scrollbar.svg)](https://badge.fury.io/js/enchant-scrollbar)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](
+https://opensource.org/licenses/MIT)
+
+
+
+
 ## Installation
 Welcome to the documentation for the Enchant Scrollbar plugin. This plugin provides a customizable
 scrollbar
