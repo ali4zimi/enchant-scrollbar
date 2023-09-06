@@ -7,9 +7,9 @@
   "repository": "ali4zimi/enchant-scrollbar",
   "homepage": "https://github.com/ali4zimi/enchant-scrollbar#readme",
   "main": "dist/index.js",
-  "source": "docs/index.html",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "source": "docs/index.html",
   "files": [
     "dist"
   ],
