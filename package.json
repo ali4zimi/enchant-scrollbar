@@ -15,9 +15,9 @@
   ],
   "scripts": {
     "serve": "serve ./docs -l 3000",
-    "start": "npm run tailwind && cp ./dist/* ./docs/.server && npm run serve",
+    "start": "npm run tailwind && npm run build && cp ./dist/* ./docs/.server && npm run serve",
     "build": "tsup src/index.ts --format cjs,esm --dts --minify --clean",
-    "tailwind": "tailwindcss -i ./docs/style.css -o ./.server/main.css",
+    "tailwind": "tailwindcss -i ./docs/style.css -o ./docs/.server/main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
