@@ -4,7 +4,10 @@
   "description": "A custom scrollbar for your web app",
   "author": "Ali Azimi",
   "license": "MIT",
-  "repository": "ali4zimi/enchant-scrollbar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ali4zimi/enchant-scrollbar.git"
+  },
   "homepage": "https://github.com/ali4zimi/enchant-scrollbar#readme",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
