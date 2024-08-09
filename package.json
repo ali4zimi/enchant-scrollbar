@@ -1,41 +1,25 @@
 {
   "name": "enchant-scrollbar",
   "version": "1.0.4",
-  "description": "A custom scrollbar for your web app",
-  "author": "Ali Azimi",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ali4zimi/enchant-scrollbar.git"
-  },
-  "homepage": "https://github.com/ali4zimi/enchant-scrollbar#readme",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "source": "docs/index.html",
+  "type": "module",
   "files": [
     "dist"
   ],
-  "scripts": {
-    "serve": "serve ./docs -l 3000",
-    "start": "npm run tailwind && npm run build && cp ./dist/* ./docs/.server && npm run serve",
-    "build": "tsup src/index.ts --format cjs,esm --dts --minify --clean",
-    "tailwind": "tailwindcss -i ./docs/style.css -o ./docs/.server/main.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "./dist/enchant-scrollbar.umd.js",
+  "module": "./dist/enchant-scrollbar.js",
+  "exports": {
+    ".": {
+      "import": "./dist/enchant-scrollbar.js",
+      "require": "./dist/enchant-scrollbar.umd.js"
+    }
   },
-  "keywords": [
-    "custom",
-    "scrollbar",
-    "enchant",
-    "mac",
-    "scrollbar"
-  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.9",
-    "postcss": "^8.4.29",
-    "serve": "^14.2.1",
-    "tailwindcss": "^3.3.3",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0"
   }
 }
