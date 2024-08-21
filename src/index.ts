@@ -20,10 +20,13 @@ export function customizeScrollbar(element: HTMLElement, preset: Preset): void {
     var lastScrollTop = scrollableContent.scrollTop;
     var lastScrollLeft = scrollableContent.scrollLeft;
     scrollableContent.addEventListener("scroll", function () {
+
         if (lastScrollTop !== scrollableContent.scrollTop) {
             lastScrollTop = scrollableContent.scrollTop;
             if (verticalScrollbar) {
-                verticalScrollbar.getThumb().style.top = `${scrollableContent.scrollTop / (scrollableContent.scrollHeight - scrollableContent.clientHeight) * (scrollableContent.clientHeight - verticalScrollbar.getThumb().clientHeight)}px`;
+                var scrollPercentage = scrollableContent.scrollTop / (scrollableContent.scrollHeight - scrollableContent.clientHeight);
+                var thumbTop = scrollPercentage * (verticalScrollbar.getTrack().clientHeight - verticalScrollbar.getThumb().clientHeight);
+                verticalScrollbar.getThumb().style.top = `${thumbTop}px`;
                 verticalScrollbar.setActive();
             }
         }
@@ -31,7 +34,9 @@ export function customizeScrollbar(element: HTMLElement, preset: Preset): void {
         if (lastScrollLeft !== scrollableContent.scrollLeft) {
             lastScrollLeft = scrollableContent.scrollLeft;
             if (horizontalScrollbar) {
-                horizontalScrollbar.getThumb().style.left = `${scrollableContent.scrollLeft / (scrollableContent.scrollWidth - scrollableContent.clientWidth) * (scrollableContent.clientWidth - horizontalScrollbar.getThumb().clientWidth)}px`;
+                var scrollPercentage = scrollableContent.scrollLeft / (scrollableContent.scrollWidth - scrollableContent.clientWidth);
+                var thumbLeft = scrollPercentage * (horizontalScrollbar.getTrack().clientWidth - horizontalScrollbar.getThumb().clientWidth);
+                horizontalScrollbar.getThumb().style.left = `${thumbLeft}px`;
                 horizontalScrollbar.setActive();
             }
         }
@@ -51,7 +56,7 @@ export function customizeScrollbar(element: HTMLElement, preset: Preset): void {
 
     if (needVerticalScrollbar) {
         verticalScrollbar = new EnchantScrollbarVertical(element, scrollableContent, preset);
-        verticalScrollbar.getThumb().style.height = `${scrollableContent.clientHeight / scrollableContent.scrollHeight * scrollableContent.clientHeight}px`;
+        verticalScrollbar.getThumb().style.height = `${scrollableContent.clientHeight / scrollableContent.scrollHeight * verticalScrollbar.getTrack().clientHeight}px`;
         element.appendChild(verticalScrollbar.getWrapper());
 
         verticalScrollbar.applyPreset(preset);
@@ -62,7 +67,7 @@ export function customizeScrollbar(element: HTMLElement, preset: Preset): void {
 
     if (needHorizontalScrollbar) {
         horizontalScrollbar = new EnchantScrollbarHorizontal(element, scrollableContent, preset);
-        horizontalScrollbar.getThumb().style.width = `${scrollableContent.clientWidth / scrollableContent.scrollWidth * scrollableContent.clientWidth}px`;
+        horizontalScrollbar.getThumb().style.width = `${scrollableContent.clientWidth / scrollableContent.scrollWidth * horizontalScrollbar.getTrack().clientWidth}px`;
         element.appendChild(horizontalScrollbar.getWrapper());
 
         horizontalScrollbar.applyPreset(preset);

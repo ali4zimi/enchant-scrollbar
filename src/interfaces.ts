@@ -1,4 +1,4 @@
-export interface Preset {
+export interface Config {
     width: string;  
     opacity: string;
     showArrows: boolean; 
