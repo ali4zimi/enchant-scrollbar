@@ -1,4 +1,4 @@
-import { customizeScrollbar } from ".";
+
 
 const scrollable = document.querySelectorAll(".enchant-scrollbar");
 
@@ -38,9 +38,6 @@ var preset: Preset = {
     thumbBorderRadiusWhileActive: "8px",
 };
 
-scrollable.forEach((el) => {
-    customizeScrollbar(el as HTMLElement, preset);
-});
 
 
 

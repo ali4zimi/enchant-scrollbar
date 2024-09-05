@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+h1 {
+    @apply text-2xl font-bold text-slate-600;
+    margin: 40px 0 20px;
+    line-height: 1.5;
+    scroll-margin-top: 120px;
+}
+
+h1:first-of-type {
+    margin-top: 20px;
+}
+
+p {
+    @apply leading-8 text-slate-600;
+    margin: 10px 0;
+    line-height: 1.7;
+    font-size: 18px;
+}

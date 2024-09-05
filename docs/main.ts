@@ -5,53 +5,23 @@ import App from './App.vue'
 createApp(App).mount('#app')
 
 
-import { customizeScrollbar } from '../src/index'
+import { mac, defaultPreset } from '../src/presets'
 
 
-const scrollable = document.querySelectorAll(".enchant-scrollbar");
+const scrollable = document.querySelectorAll(".enchant-scrollbar2");
 
-
-interface Config {
-    width: string; 
-    opacity: string;
-    showArrows: boolean; 
-    trackColor: string;  
-    thumbColor: string;  
-    trackBorderRadius: string;
-    thumbBorderRadius: string;
-    widthWhileActive: string;    
-    opacityWhileActive: string;
-    showArrowsWhileActive: boolean;
-    trackColorWhileActive: string;
-    thumbColorWhileActive: string;
-    trackBorderRadiusWhileActive: string;
-    thumbBorderRadiusWhileActive: string;  
-}
-
-
-var preset: Config = {
-    width: "10px",
-    opacity: "0",
-    showArrows: false,
-    trackColor: "#f1f1f1",
-    thumbColor: "#c1c1c1",
-    trackBorderRadius: "8px",
-    thumbBorderRadius: "8px",
-    widthWhileActive: "10px",
-    opacityWhileActive: "1",
-    showArrowsWhileActive: false,
-    trackColorWhileActive: "#f1f1f1",
-    thumbColorWhileActive: "#c1c1c1",
-    trackBorderRadiusWhileActive: "8px",
-    thumbBorderRadiusWhileActive: "8px",
-};
 
 scrollable.forEach((el) => {
-    customizeScrollbar(el as HTMLElement, preset);
+    // customizeScrollbar(el as HTMLElement, defaultPreset);
+    var myScrollbar = new MyScrollbar(el as HTMLDivElement, mac);
 });
 
 
+import { MyScrollbar } from '../src/index'
 
 
-
-
+var mainScrollbar = new MyScrollbar(document.querySelector("#main") as HTMLDivElement, defaultPreset);
+const verticalScrollbar = mainScrollbar.getVerticalScrollbar();
+if (verticalScrollbar) {
+  verticalScrollbar.getWrapper().style.zIndex = '1000';
+}
