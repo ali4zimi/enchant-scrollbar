@@ -40,7 +40,6 @@ export class EnchantScrollbar {
 
     addVerticalScrollbar(config: Config) {
         this.verticalScrollbar = new ScrollbarVertical(this.enchantWrapper, this.enchantContent, config);
-        this.verticalScrollbar.getThumb().style.height = `${this.enchantContent.clientHeight / this.enchantContent.scrollHeight * this.verticalScrollbar.getTrack().clientHeight}px`;
         this.enchantWrapper.appendChild(this.verticalScrollbar.getWrapper());
         this.verticalScrollbar.applyPreset(config);
         this.verticalScrollbar.activateMouseEvents();
@@ -49,7 +48,6 @@ export class EnchantScrollbar {
 
     addHorizontalScrollbar(config: Config) {
         this.horizontalScrollbar = new ScrollbarHorizontal(this.enchantWrapper, this.enchantContent, config);
-        this.horizontalScrollbar.getThumb().style.width = `${this.enchantContent.clientWidth / this.enchantContent.scrollWidth * this.horizontalScrollbar.getTrack().clientWidth}px`;
         this.enchantWrapper.appendChild(this.horizontalScrollbar.getWrapper());
         this.horizontalScrollbar.applyPreset(config);
         this.horizontalScrollbar.activateMouseEvents();

@@ -125,6 +125,7 @@ export abstract class Scrollbar {
 }
 
 export class ScrollbarVertical extends Scrollbar {
+    private thumbDistanceTop = 0;
     private offsetY = 0;
 
     constructor(element: HTMLElement, enchantContent: HTMLElement, config: Config) {
@@ -149,6 +150,8 @@ export class ScrollbarVertical extends Scrollbar {
         }
 
         this.applyPreset(config);
+
+        this.update();
     }
 
     addArrows() {
@@ -182,6 +185,23 @@ export class ScrollbarVertical extends Scrollbar {
         this.thumb.style.borderRadius = `${preset.thumbBorderRadius}`;
     }
 
+    update() {
+        this.setThumb(this.thumbDistanceTop);
+        this.setSrollPosition(this.thumbDistanceTop);
+    }
+
+    setThumb(y: number) {
+        this.getThumb().style.height = `${this.enchantContent.clientHeight / this.enchantContent.scrollHeight * this.getTrack().clientHeight}px`;
+        this.getThumb().style.top = `${y}px`;
+
+        this.thumbDistanceTop = y;
+    }
+
+    setSrollPosition(y: number) {
+        const scrollPercentage = y / (this.getTrack().clientHeight - this.getThumb().clientHeight);
+        this.enchantContent.scrollTop = scrollPercentage * (this.enchantContent.scrollHeight - this.enchantContent.clientHeight);
+    }
+
     activateMouseEvents() {
         super.activateMouseEvents();
         this.getThumb().addEventListener("mousedown", this.thumbMouseDownHandler);
@@ -202,11 +222,10 @@ export class ScrollbarVertical extends Scrollbar {
         const boundaryRect = this.getTrack().getBoundingClientRect();
         let y = e.clientY - boundaryRect.top - this.offsetY;
         y = Math.max(0, Math.min(y, boundaryRect.height - this.getThumb().offsetHeight));
-        this.getThumb().style.top = `${y}px`;
 
-        const scrollPercentage = y / (boundaryRect.height - this.getThumb().offsetHeight);
+        this.thumbDistanceTop = y;
 
-        this.enchantContent.scrollTop = scrollPercentage * (this.enchantContent.scrollHeight - this.enchantContent.clientHeight);
+        this.update();
     }
 
     mouseUpHandler = (e: MouseEvent) => {
@@ -220,8 +239,6 @@ export class ScrollbarVertical extends Scrollbar {
         document.removeEventListener("mouseup", this.mouseUpHandler);
     }
 
-
-
     trackMouseDownHandler = (e: MouseEvent) => {
         if (this.mouseOnThumb) return;
 
@@ -229,10 +246,9 @@ export class ScrollbarVertical extends Scrollbar {
         const boundaryRect = this.getTrack().getBoundingClientRect();
         let y = e.clientY - boundaryRect.top - this.getThumb().offsetHeight / 2;
         y = Math.max(0, Math.min(y, boundaryRect.height - this.getThumb().offsetHeight));
-        this.getThumb().style.top = `${y}px`;
 
-        const scrollPercentage = y / (boundaryRect.height - this.getThumb().offsetHeight);
-        this.enchantContent.scrollTop = scrollPercentage * (this.enchantContent.scrollHeight - this.enchantContent.clientHeight);
+        this.thumbDistanceTop = y;
+        this.update();
 
         this.thumbMouseDownHandler(e);
     }
@@ -240,6 +256,7 @@ export class ScrollbarVertical extends Scrollbar {
 }
 
 export class ScrollbarHorizontal extends Scrollbar {
+    private thumbDistanceLeft = 0;
     private offsetX = 0;
 
     constructor(element: HTMLElement, enchantContent: HTMLElement, config: Config) {
@@ -264,6 +281,8 @@ export class ScrollbarHorizontal extends Scrollbar {
         }
 
         this.applyPreset(config);
+
+        this.update();
     }
 
     addArrows() {
@@ -295,6 +314,21 @@ export class ScrollbarHorizontal extends Scrollbar {
         this.wrapper.style.height = preset.width;
     }
 
+    update() {
+        this.setThumb(this.thumbDistanceLeft);
+        this.setSrollPosition(this.thumbDistanceLeft);
+    }
+
+    setThumb(x: number) {
+        this.getThumb().style.width = `${this.enchantContent.clientWidth / this.enchantContent.scrollWidth * this.getTrack().clientWidth}px`;
+        this.getThumb().style.left = `${x}px`;
+    }
+
+    setSrollPosition(x: number) {
+        const scrollPercentage = x / (this.getTrack().clientWidth - this.getThumb().clientWidth);
+        this.enchantContent.scrollLeft = scrollPercentage * (this.enchantContent.scrollWidth - this.enchantContent.clientWidth);
+    }
+
     activateMouseEvents() {
         super.activateMouseEvents();
 
@@ -316,12 +350,10 @@ export class ScrollbarHorizontal extends Scrollbar {
         const boundaryRect = this.getTrack().getBoundingClientRect();
         let x = e.clientX - boundaryRect.left - this.offsetX;
         x = Math.max(0, Math.min(x, boundaryRect.width - this.getThumb().offsetWidth));
-        this.getThumb().style.left = `${x}px`;
 
-        const scrollPercentage = x / (boundaryRect.width - this.getThumb().offsetWidth);
+        this.thumbDistanceLeft = x;
 
-        this.enchantContent.scrollLeft = scrollPercentage * (this.enchantContent.scrollWidth - this.enchantContent.clientWidth);
-
+        this.update();
     }
 
     mouseUpHandler = (e: MouseEvent) => {
@@ -338,11 +370,11 @@ export class ScrollbarHorizontal extends Scrollbar {
         e.preventDefault();
         const boundaryRect = this.getTrack().getBoundingClientRect();
         let x = e.clientX - boundaryRect.left - this.getThumb().offsetWidth / 2;
-        x = Math.max(0, Math.min(x, boundaryRect.width - this.getThumb().offsetWidth));
-        this.getThumb().style.left = `${x}px`;
 
-        const scrollPercentage = x / (boundaryRect.width - this.getThumb().offsetWidth);
-        this.enchantContent.scrollLeft = scrollPercentage * (this.enchantContent.scrollWidth - this.enchantContent.clientWidth);
+        x = Math.max(0, Math.min(x, boundaryRect.width - this.getThumb().offsetWidth));
+        this.thumbDistanceLeft = x;
+
+        this.update();
 
         this.thumbMouseDownHandler(e);
     }
