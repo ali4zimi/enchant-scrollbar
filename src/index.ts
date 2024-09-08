@@ -16,7 +16,6 @@ export class EnchantScrollbar {
         this.enchantWrapper.style.position = 'relative';
 
         this.enchantContent = enchantWrapper.querySelector('.enchant-content') as HTMLDivElement;
-        console.log(this.enchantContent.style.position)
 
         this.enchantContent.style.position ? this.enchantContent.style.position = 'relative' : this.enchantContent.style.position;
         this.enchantContent.style.overflow = 'scroll';
@@ -35,6 +34,7 @@ export class EnchantScrollbar {
         }
 
         this.addScrollEventListeners();
+        this.addWindowResizeListener();
     }
 
 
@@ -87,6 +87,17 @@ export class EnchantScrollbar {
             }
             if (this.horizontalScrollbar) {
                 this.horizontalScrollbar.setIdle();
+            }
+        });
+    }
+
+    addWindowResizeListener() {
+        window.addEventListener("resize", () => {
+            if (this.verticalScrollbar) {
+                this.verticalScrollbar.update();
+            }
+            if (this.horizontalScrollbar) {
+                this.horizontalScrollbar.update();
             }
         });
     }
