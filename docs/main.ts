@@ -8,19 +8,19 @@ createApp(App).mount('#app')
 import { mac, defaultPreset } from '../src/presets'
 
 
-const scrollable = document.querySelectorAll(".enchant-scrollbar2");
+const scrollable = document.querySelectorAll(".enchant-wrapper2");
 
 
 scrollable.forEach((el) => {
     // customizeScrollbar(el as HTMLElement, defaultPreset);
-    var myScrollbar = new MyScrollbar(el as HTMLDivElement, mac);
+    var myScrollbar = new EnchantScrollbar(el as HTMLDivElement, mac);
 });
 
 
-import { MyScrollbar } from '../src/index'
+import { EnchantScrollbar } from '../src/index'
 
 
-var mainScrollbar = new MyScrollbar(document.querySelector("#main") as HTMLDivElement, defaultPreset);
+var mainScrollbar = new EnchantScrollbar(document.querySelector("#main") as HTMLDivElement, defaultPreset);
 const verticalScrollbar = mainScrollbar.getVerticalScrollbar();
 if (verticalScrollbar) {
   verticalScrollbar.getWrapper().style.zIndex = '1000';

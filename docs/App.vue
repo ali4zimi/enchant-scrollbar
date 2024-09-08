@@ -1,10 +1,10 @@
 <template>
-  <div id="main" class="w-full h-screen fixed enchant-scrollbar">
-    <div class="w-full h-full scrollable-content">
+  <div id="main" class="w-full h-screen fixed enchant-wrapper">
+    <div class="w-full h-full enchant-content">
 
       <Navbar />
 
-      <div class="w-full md:w-8/12 h-fit mx-auto flex bg-slate-50">
+      <div class="w-full md:w-8/12 h-fit mx-auto flex">
         <Sidebar />
 
         <Content />

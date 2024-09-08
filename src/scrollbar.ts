@@ -1,8 +1,8 @@
 import { Config } from "./interfaces";
 import { arrows } from "./icons";
 
-export abstract class EnchantScrollbar {
-    protected scrollableContent: HTMLElement;
+export abstract class Scrollbar {
+    protected enchantContent: HTMLElement;
     protected wrapper: HTMLElement;
     protected track: HTMLElement;
     protected thumb: HTMLElement;
@@ -33,8 +33,8 @@ export abstract class EnchantScrollbar {
     }
 
 
-    constructor(element: HTMLElement, scrollableContent: HTMLElement, config: Config) {
-        this.scrollableContent = scrollableContent;
+    constructor(element: HTMLElement, enchantContent: HTMLElement, config: Config) {
+        this.enchantContent = enchantContent;
         this.config = config;
 
         this.wrapper = document.createElement("div");
@@ -124,11 +124,11 @@ export abstract class EnchantScrollbar {
 
 }
 
-export class EnchantScrollbarVertical extends EnchantScrollbar {
+export class ScrollbarVertical extends Scrollbar {
     private offsetY = 0;
 
-    constructor(element: HTMLElement, scrollableContent: HTMLElement, config: Config) {
-        super(element, scrollableContent, config);
+    constructor(element: HTMLElement, enchantContent: HTMLElement, config: Config) {
+        super(element, enchantContent, config);
         this.wrapper.style.right = "0";
         this.wrapper.style.top = "0";
         this.wrapper.style.height = "100%";
@@ -206,7 +206,7 @@ export class EnchantScrollbarVertical extends EnchantScrollbar {
 
         const scrollPercentage = y / (boundaryRect.height - this.getThumb().offsetHeight);
 
-        this.scrollableContent.scrollTop = scrollPercentage * (this.scrollableContent.scrollHeight - this.scrollableContent.clientHeight);
+        this.enchantContent.scrollTop = scrollPercentage * (this.enchantContent.scrollHeight - this.enchantContent.clientHeight);
     }
 
     mouseUpHandler = (e: MouseEvent) => {
@@ -232,18 +232,18 @@ export class EnchantScrollbarVertical extends EnchantScrollbar {
         this.getThumb().style.top = `${y}px`;
 
         const scrollPercentage = y / (boundaryRect.height - this.getThumb().offsetHeight);
-        this.scrollableContent.scrollTop = scrollPercentage * (this.scrollableContent.scrollHeight - this.scrollableContent.clientHeight);
+        this.enchantContent.scrollTop = scrollPercentage * (this.enchantContent.scrollHeight - this.enchantContent.clientHeight);
 
         this.thumbMouseDownHandler(e);
     }
 
 }
 
-export class EnchantScrollbarHorizontal extends EnchantScrollbar {
+export class ScrollbarHorizontal extends Scrollbar {
     private offsetX = 0;
 
-    constructor(element: HTMLElement, scrollableContent: HTMLElement, config: Config) {
-        super(element, scrollableContent, config);
+    constructor(element: HTMLElement, enchantContent: HTMLElement, config: Config) {
+        super(element, enchantContent, config);
         this.wrapper.style.bottom = "0";
         this.wrapper.style.left = "0";
         this.wrapper.style.width = "100%";
@@ -320,7 +320,7 @@ export class EnchantScrollbarHorizontal extends EnchantScrollbar {
 
         const scrollPercentage = x / (boundaryRect.width - this.getThumb().offsetWidth);
 
-        this.scrollableContent.scrollLeft = scrollPercentage * (this.scrollableContent.scrollWidth - this.scrollableContent.clientWidth);
+        this.enchantContent.scrollLeft = scrollPercentage * (this.enchantContent.scrollWidth - this.enchantContent.clientWidth);
 
     }
 
@@ -342,7 +342,7 @@ export class EnchantScrollbarHorizontal extends EnchantScrollbar {
         this.getThumb().style.left = `${x}px`;
 
         const scrollPercentage = x / (boundaryRect.width - this.getThumb().offsetWidth);
-        this.scrollableContent.scrollLeft = scrollPercentage * (this.scrollableContent.scrollWidth - this.scrollableContent.clientWidth);
+        this.enchantContent.scrollLeft = scrollPercentage * (this.enchantContent.scrollWidth - this.enchantContent.clientWidth);
 
         this.thumbMouseDownHandler(e);
     }
