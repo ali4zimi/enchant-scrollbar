@@ -97,9 +97,9 @@
 
         <h1 id="contributing">Contributing</h1>
         <p>
-            We welcome contributions from the community to help improve Enchant-scrollbar and make it even better. If
+            I welcome contributions from the community to help improve Enchant-scrollbar and make it even better. If
             you have any ideas, suggestions, or bug reports, please feel free to open an issue or submit a pull request
-            on GitHub. We appreciate your feedback and support!
+            on GitHub. I appreciate your feedback and support!
         </p>
 
         <h1 id="license">License</h1>
