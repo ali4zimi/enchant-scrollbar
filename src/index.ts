@@ -1,4 +1,5 @@
 import { Config } from './interfaces';
+import { preset_1 } from './presets';
 import { ScrollbarVertical } from './scrollbar';
 import { ScrollbarHorizontal } from './scrollbar';
 
@@ -9,37 +10,56 @@ export class EnchantScrollbar {
 
     private verticalScrollbar: ScrollbarVertical | undefined;
     private horizontalScrollbar: ScrollbarHorizontal | undefined;
+    private config: Config | undefined;
 
-    constructor(enchantWrapper: HTMLDivElement, config: Config) {
+    constructor(enchantWrapper: HTMLDivElement, config?: Config) {
+        this.config = config || preset_1;
         this.enchantWrapper = enchantWrapper;
         this.enchantWrapper.style.overflow = 'hidden';
         this.enchantWrapper.style.position = 'relative';
-
         this.enchantContent = enchantWrapper.querySelector('.enchant-content') as HTMLDivElement;
-
         this.enchantContent.style.position ? this.enchantContent.style.position = 'relative' : this.enchantContent.style.position;
         this.enchantContent.style.overflow = 'scroll';
 
         this.removeDefaultScrollbar();
 
-        var needHorizontalScrollbar = this.enchantContent.scrollWidth > this.enchantContent.clientWidth;
-        var needVerticalScrollbar = this.enchantContent.scrollHeight > this.enchantContent.clientHeight;
+        this.addVerticalScrollbar(this.config!);
 
-        if (needVerticalScrollbar) {
-            this.addVerticalScrollbar(config);
-        }
+        this.addHorizontalScrollbar(this.config!);
 
-        if (needHorizontalScrollbar) {
-            this.addHorizontalScrollbar(config);
-        }
+        this.update();
 
         this.addScrollEventListeners();
         this.addWindowResizeListener();
     }
 
+    update() {
+        var horizontalOverflow = this.enchantContent.scrollWidth > this.enchantContent.clientWidth;
+        var verticalOverflow = this.enchantContent.scrollHeight > this.enchantContent.clientHeight;
+
+        if (horizontalOverflow && verticalOverflow) {
+            if (this.verticalScrollbar) {
+                this.verticalScrollbar.getWrapper().style.height = `calc(100% - ${this.config?.width})`;
+            }
+
+            if (this.horizontalScrollbar) {
+                this.horizontalScrollbar.getWrapper().style.width = `calc(100% - ${this.config?.width})`;
+            }
+
+            // this.horizontalScrollbar.getWrapper().style.display = 'block';
+            // if (this.verticalScrollbar) {
+            //     this.verticalScrollbar.getTrack().style.paddingBottom = `12px`;
+            // }
+        }  
+        
+        if (!horizontalOverflow) {
+            this.horizontalScrollbar ? this.horizontalScrollbar.getWrapper().style.display = 'none' : null;
+        }
+    }
+
 
     addVerticalScrollbar(config: Config) {
-        this.verticalScrollbar = new ScrollbarVertical(this.enchantWrapper, this.enchantContent, config);
+        this.verticalScrollbar = new ScrollbarVertical(this, config);
         this.enchantWrapper.appendChild(this.verticalScrollbar.getWrapper());
         this.verticalScrollbar.applyPreset(config);
         this.verticalScrollbar.activateMouseEvents();
@@ -47,7 +67,7 @@ export class EnchantScrollbar {
     }
 
     addHorizontalScrollbar(config: Config) {
-        this.horizontalScrollbar = new ScrollbarHorizontal(this.enchantWrapper, this.enchantContent, config);
+        this.horizontalScrollbar = new ScrollbarHorizontal(this, config);
         this.enchantWrapper.appendChild(this.horizontalScrollbar.getWrapper());
         this.horizontalScrollbar.applyPreset(config);
         this.horizontalScrollbar.activateMouseEvents();
@@ -99,6 +119,7 @@ export class EnchantScrollbar {
             if (this.horizontalScrollbar) {
                 this.horizontalScrollbar.update();
             }
+            this.update();
         });
     }
 

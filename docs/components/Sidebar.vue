@@ -10,14 +10,12 @@
             <li>
                 <a href="#usage">Usage</a>
             </li>
+
+            <li>
+                <a href="#presets">Presets</a>
+            </li>
             <li>
                 <a href="#configuration">Configuration</a>
-            </li>
-            <li>
-                <a href="#api">API Reference</a>
-            </li>
-            <li>
-                <a href="#events">Events</a>
             </li>
             <li>
                 <a href="#contributing">Contributing</a>
@@ -32,7 +30,7 @@
 
 <style>
 #sidebar {
-    @apply w-[300px] md:w-4/12 h-screen px-6 pt-[100px] left-[-300px] fixed top-0 md:sticky border-r;
+    @apply w-[300px] md:w-4/12 h-screen px-6 pt-[100px] left-[-300px] fixed top-0 md:sticky border-r bg-white;
     transition: left 0.3s;
 }
 
@@ -59,10 +57,16 @@ a.active {
 </style>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const activeLink = ref(null);
 
-
+onMounted(() => {
+    document.querySelectorAll('#sidebar a').forEach((link) => {
+        link.addEventListener('click', () => {
+            this.$refs.sidebarOpen = false;
+        });
+    });
+});
 
 </script>

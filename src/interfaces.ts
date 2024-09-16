@@ -19,7 +19,6 @@ export interface Config {
     trackBorderRadiusWhileActive?: string;
     thumbBorderRadiusWhileActive?: string;  
 
-    // show arrows default is true
     showArrows: boolean;
     arrowsColor?: string;
     arrowsWidth?: string;

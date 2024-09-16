@@ -4,23 +4,20 @@ import App from './App.vue'
 
 createApp(App).mount('#app')
 
-
-import { mac, defaultPreset } from '../src/presets'
-
-
-const scrollable = document.querySelectorAll(".enchant-wrapper2");
-
-
-scrollable.forEach((el) => {
-    // customizeScrollbar(el as HTMLElement, defaultPreset);
-    var myScrollbar = new EnchantScrollbar(el as HTMLDivElement, mac);
-});
-
-
 import { EnchantScrollbar } from '../src/index'
+import { preset_1, preset_2 } from '../src/presets'
 
 
-var mainScrollbar = new EnchantScrollbar(document.querySelector("#main") as HTMLDivElement, defaultPreset);
+const scrollable = document.querySelector("#enchant-wrapper2");
+
+
+var myScrollbar = new EnchantScrollbar(scrollable as HTMLDivElement, preset_2);
+
+
+
+
+
+var mainScrollbar = new EnchantScrollbar(document.querySelector("#main") as HTMLDivElement, preset_1);
 const verticalScrollbar = mainScrollbar.getVerticalScrollbar();
 if (verticalScrollbar) {
   verticalScrollbar.getWrapper().style.zIndex = '1000';

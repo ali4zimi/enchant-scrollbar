@@ -2,7 +2,7 @@
     <div class="w-full h-[80px] fixed top-0 flex items-center bg-white shadow-md z-10">
         <div class="w-full md:w-8/12 px-6 mx-auto flex">
             <div class="flex gap-2 ">
-                <div class="burger-menu content-center justify-center md:hidden" @click="switchSidebar">
+                <div class="burger-menu content-center justify-center md:hidden" @click="toggleSidebar">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
                         <path fill="none" stroke="#888888" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="1.5" d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5" />
@@ -83,11 +83,9 @@ const switchTheme = () => {
     } else {
         circle.style.left = '0px';
     }
-
-    console.log(isDark.value);
 }
 
-const switchSidebar = () => {
+const toggleSidebar = () => {
     sidebarOpen.value = !sidebarOpen.value;
     const sidebar = document.querySelector('#sidebar');
     if (sidebarOpen.value) {

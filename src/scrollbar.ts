@@ -1,5 +1,6 @@
 import { Config } from "./interfaces";
 import { arrows } from "./icons";
+import { EnchantScrollbar } from ".";
 
 export abstract class Scrollbar {
     protected enchantContent: HTMLElement;
@@ -33,8 +34,8 @@ export abstract class Scrollbar {
     }
 
 
-    constructor(element: HTMLElement, enchantContent: HTMLElement, config: Config) {
-        this.enchantContent = enchantContent;
+    constructor(context: EnchantScrollbar, config: Config) {
+        this.enchantContent = context.getEnchantContent();
         this.config = config;
 
         this.wrapper = document.createElement("div");
@@ -54,7 +55,7 @@ export abstract class Scrollbar {
         this.thumb.style.backgroundColor = "#999";
         this.track.appendChild(this.thumb);
 
-        element.appendChild(this.wrapper);
+        context.getEnchantWrapper().appendChild(this.wrapper);
     }
 
     activateMouseEvents() {
@@ -128,24 +129,24 @@ export class ScrollbarVertical extends Scrollbar {
     private thumbDistanceTop = 0;
     private offsetY = 0;
 
-    constructor(element: HTMLElement, enchantContent: HTMLElement, config: Config) {
-        super(element, enchantContent, config);
+    constructor(context: EnchantScrollbar, config: Config) {
+        super(context, config);
         this.wrapper.style.right = "0";
         this.wrapper.style.top = "0";
         this.wrapper.style.height = "100%";
         this.wrapper.style.width = "10px";
 
-        this.track.style.top = `${config.showArrows ? 10 : 0}px`;
+        this.track.style.top = `${config?.showArrows ? 10 : 0}px`;
         this.track.style.right = "0";
         this.track.style.bottom = "0";
-        this.track.style.width = config.trackWidth || "auto";
-        this.track.style.height = `calc(100% - ${config.showArrows ? 20 : 0}px)`;
+        this.track.style.width = config?.trackWidth || "auto";
+        this.track.style.height = `calc(100% - ${config?.showArrows ? 20 : 0}px)`;
 
         this.thumb.style.right = "0";
         this.thumb.style.top = "0";
-        this.thumb.style.width = config.width;
+        this.thumb.style.width = config?.width;
 
-        if (config.showArrows) {
+        if (config?.showArrows) {
             this.addArrows();
         }
 
@@ -175,14 +176,15 @@ export class ScrollbarVertical extends Scrollbar {
     }
 
     applyPreset(preset: Config): void {
-        this.wrapper.style.width = preset.width;
-        this.wrapper.style.opacity = preset.opacity;
-        this.wrapper.style.zIndex = `${preset.zIndex}`;
-        this.track.style.width = preset.width;
-        this.track.style.backgroundColor = preset.trackColor;
-        this.track.style.borderRadius = `${preset.trackBorderRadius}`;
-        this.thumb.style.backgroundColor = preset.thumbColor;
-        this.thumb.style.borderRadius = `${preset.thumbBorderRadius}`;
+        this.wrapper.style.width = preset?.width;
+        this.wrapper.style.opacity = preset?.opacity;
+        this.wrapper.style.zIndex = `${preset?.zIndex}`;
+        this.track.style.width = preset?.width ?? "10px";
+        this.track.style.backgroundColor = preset?.trackColor;
+        this.track.style.borderRadius = `${preset?.trackBorderRadius}`;
+        this.thumb.style.backgroundColor = preset?.thumbColor;
+        this.thumb.style.borderRadius = `${preset?.thumbBorderRadius}`;
+        this.thumb.style.width = preset?.width ?? "10px";
     }
 
     update() {
@@ -259,8 +261,8 @@ export class ScrollbarHorizontal extends Scrollbar {
     private thumbDistanceLeft = 0;
     private offsetX = 0;
 
-    constructor(element: HTMLElement, enchantContent: HTMLElement, config: Config) {
-        super(element, enchantContent, config);
+    constructor(context: EnchantScrollbar, config: Config) {
+        super(context, config);
         this.wrapper.style.bottom = "0";
         this.wrapper.style.left = "0";
         this.wrapper.style.width = "100%";
