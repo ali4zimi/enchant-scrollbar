@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full md:w-8/12 px-6 py-[100px]">
+    <div class="w-full md:w-8/12 px-6 py-[100px] ">
         <h1 id="introduction">Introduction</h1>
         <p>
             Enchant-scrollbar is a lightweight plugin designed to create and customize scrollbars for your web
@@ -48,7 +48,7 @@
             </code>
         </div>
 
-        <h2 class="text-2xl font-bold text-slate-600">Result</h2>
+        <h2 class="text-2xl font-bold ">Result</h2>
         <div id="enchant-wrapper2" class="border border-gray-300 p-2" style="height: 400px; width: 100%;">
             <div class="enchant-content text-3xl w-full h-full">
                 <h1>Scroll me</h1>
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <h1 class="text-2xl font-bold text-slate-600" id="presets">Presets</h1>
+        <h1 class="text-2xl font-bold" id="presets">Presets</h1>
         <p>
             Enchant-scrollbar includes several presets that you can use out of the box. These presets are like themes
             that you can import and apply:

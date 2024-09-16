@@ -1,8 +1,8 @@
 <template>
-  <div id="main" class="w-full h-screen fixed enchant-wrapper">
+  <div id="main" class="w-full h-screen fixed enchant-wrapper dark:bg-gray-800">
     <div class="w-full h-full enchant-content">
 
-      <div class="w-full h-[80px] fixed top-0 flex items-center bg-white shadow-md z-10">
+      <div class="w-full h-[80px] fixed top-0 flex items-center shadow-md z-10 bg-white dark:bg-gray-800">
         <div class="w-full md:w-8/12 px-6 mx-auto flex">
           <div class="flex gap-2 ">
             <div class="burger-menu content-center justify-center md:hidden" @click="toggleSidebar">
@@ -18,7 +18,7 @@
           <div class="ml-auto flex items-center">
             <div class="flex gap-2">
               <div class="github-link">
-                <a href="#" class="text-lg font-normal">
+                <a href="https://github.com/ali4zimi/enchant-scrollbar" class="text-lg font-normal">
                   <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
                     <path
                       d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2" />
@@ -43,7 +43,7 @@
         </div>
       </div>
 
-      <div class="w-full md:w-8/12 h-fit mx-auto flex">
+      <div class="w-full md:w-8/12 h-fit mx-auto flex ">
         <div id="sidebar" class="">
           <ul class="mt-8">
             <li>
@@ -75,15 +75,19 @@
       </div>
 
 
-      <footer class="w-full py-4 bg-slate-200 border-t shadow-sm">
-        <div class="w-8/12 mx-auto flex justify-between">
+      <footer class="w-full py-4 bg-slate-200 border-t shadow-sm dark:bg-gray-900 dark:text-slate-500 dark:border-slate-800">
+        <div class="w-8/12 mx-auto text-center md:flex md:justify-between">
           <div>
-            &copy; 2021 Enchant-scrollbar. All rights reserved.
+            &copy; 2021 Enchant-Scrollbar. All rights reserved.
           </div>
 
-          <div>
-            <a href="#" class="text-slate-600">Privacy Policy</a>
-            <a href="#" class="text-slate-600 ml-4">Terms of Service</a>
+          <div class="flex justify-center my-2 md:my-0">
+            <a href="https://github.com/ali4zimi/enchant-scrollbar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
+                <path
+                  d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2" />
+              </svg>
+            </a>
           </div>
         </div>
       </footer>
@@ -118,7 +122,7 @@ svg {
 }
 
 #sidebar {
-  @apply w-[300px] md:w-4/12 h-screen px-6 pt-[100px] left-[-300px] fixed top-0 md:sticky border-r bg-white;
+  @apply w-[300px] md:w-4/12 h-screen px-6 pt-[100px] left-[-300px] fixed top-0 md:sticky border-r bg-white dark:bg-gray-800 border-slate-200 dark:border-slate-700;
   transition: left 0.3s;
 }
 
@@ -131,7 +135,7 @@ svg {
 }
 
 a {
-  @apply text-slate-600;
+  @apply text-slate-600 dark:text-slate-400;
   font-size: 18px;
 }
 
@@ -155,6 +159,7 @@ const sidebarOpen = ref(false);
 
 const switchTheme = () => {
   isDark.value = !isDark.value;
+  localStorage.setItem('theme', isDark.value ? 'dark' : 'light');
   document.body.classList.toggle('dark');
 
   const circle = document.querySelector('.circle');
@@ -163,6 +168,7 @@ const switchTheme = () => {
   } else {
     circle.style.left = '0px';
   }
+
 }
 
 const toggleSidebar = () => {
@@ -176,6 +182,12 @@ const toggleSidebar = () => {
 }
 
 onMounted(() => {
+  const theme = localStorage.getItem('theme');
+  if (theme === 'dark') {
+    switchTheme();
+  }  
+
+
   document.querySelectorAll('#sidebar a').forEach((link) => {
     link.addEventListener('click', () => {
       toggleSidebar();

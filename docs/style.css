@@ -4,7 +4,7 @@
 
 
 h1 {
-    @apply text-2xl font-bold text-slate-600;
+    @apply text-2xl font-bold text-slate-600 dark:text-slate-400;
     margin: 40px 0 10px;
     line-height: 1.5;
     scroll-margin-top: 120px;
@@ -15,14 +15,14 @@ h1:first-of-type {
 }
 
 h2 {
-    @apply text-2xl font-bold text-slate-600;
+    @apply text-2xl font-bold text-slate-600 dark:text-slate-400;
     margin: 40px 0 10px;
     line-height: 1.5;
     scroll-margin-top: 120px;
 }
 
 p {
-    @apply leading-8 text-slate-600;
+    @apply leading-8 text-slate-600 dark:text-slate-400;
     margin: 10px 0;
     line-height: 1.7;
     font-size: 18px;
