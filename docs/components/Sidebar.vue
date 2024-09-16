@@ -64,7 +64,6 @@ const activeLink = ref(null);
 onMounted(() => {
     document.querySelectorAll('#sidebar a').forEach((link) => {
         link.addEventListener('click', () => {
-            this.$refs.sidebarOpen = false;
         });
     });
 });
