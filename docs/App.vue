@@ -2,7 +2,7 @@
   <div id="main" class="w-full h-screen fixed enchant-wrapper dark:bg-gray-800">
     <div class="w-full h-full enchant-content">
 
-      <div class="w-full h-[80px] fixed top-0 flex items-center shadow-md z-10 bg-white dark:bg-gray-800">
+      <div class="w-full h-[80px] fixed top-0 flex items-center shadow-md z-10 bg-slate-200 dark:bg-gray-900">
         <div class="w-full md:w-8/12 px-6 mx-auto flex">
           <div class="flex gap-2 ">
             <div class="burger-menu content-center justify-center md:hidden" @click="toggleSidebar">
@@ -25,7 +25,7 @@
                   </svg>
                 </a>
               </div>
-              <div class="w-[1px] h-10px bg-slate-200"></div>
+              <div class="w-[1px] h-10px bg-slate-500 dark:bg-slate-500"></div>
               <div class="theme-switcher" id="theme-switcher" @click="switchTheme">
                 <div class="circle p-1">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" v-if="!isDark">
@@ -74,8 +74,7 @@
         <Content />
       </div>
 
-
-      <footer class="w-full py-4 bg-slate-200 border-t shadow-sm dark:bg-gray-900 dark:text-slate-500 dark:border-slate-800">
+      <footer class="w-full py-4  border-t shadow-md bg-slate-200 dark:bg-gray-900 dark:text-slate-500 dark:border-slate-700">
         <div class="w-8/12 mx-auto text-center md:flex md:justify-between">
           <div>
             &copy; 2021 Enchant-Scrollbar. All rights reserved.
