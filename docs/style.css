@@ -2,30 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-slate-800 font-sans;
-}
-.root {
-  @apply text-slate-50;
-}
-
-p {
-  @apply text-[1.2rem] text-slate-400;
-}
 
 h1 {
-  @apply text-[1.8rem] font-bold mt-2 scroll-mt-16;
+    @apply text-2xl font-bold text-slate-600 dark:text-slate-400;
+    margin: 40px 0 10px;
+    line-height: 1.5;
+    scroll-margin-top: 120px;
+}
+
+h1:first-of-type {
+    margin-top: 20px;
 }
 
 h2 {
-  @apply text-[1.6rem] font-bold mt-2 scroll-mt-16;
+    @apply text-2xl font-bold text-slate-600 dark:text-slate-400;
+    margin: 40px 0 10px;
+    line-height: 1.5;
+    scroll-margin-top: 120px;
 }
 
-a {
-  @apply text-[1.2rem] text-slate-400 hover:text-slate-300;
-}
-
-
-.doc > h1:not(:first-child) {
-  @apply mt-10
+p {
+    @apply leading-8 text-slate-600 dark:text-slate-400;
+    margin: 10px 0;
+    line-height: 1.7;
+    font-size: 18px;
 }
