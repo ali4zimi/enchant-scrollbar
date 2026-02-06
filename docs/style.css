@@ -27,3 +27,20 @@ p {
     line-height: 1.7;
     font-size: 18px;
 }
+
+.config-table {
+    @apply w-full border-collapse my-6 text-sm;
+}
+
+.config-table th,
+.config-table td {
+    @apply border border-slate-300 dark:border-slate-600 px-3 py-2 text-left text-slate-600 dark:text-slate-400;
+}
+
+.config-table th {
+    @apply bg-slate-100 dark:bg-slate-700 font-semibold;
+}
+
+.config-table tr:hover {
+    @apply bg-slate-50 dark:bg-slate-800;
+}

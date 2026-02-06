@@ -77,7 +77,7 @@
       <footer class="w-full py-4  border-t shadow-md bg-slate-200 dark:bg-gray-900 dark:text-slate-500 dark:border-slate-700">
         <div class="w-8/12 mx-auto text-center md:flex md:justify-between">
           <div>
-            &copy; 2021 Enchant-Scrollbar. All rights reserved.
+            &copy; {{ currentYear }} Enchant-Scrollbar. All rights reserved.
           </div>
 
           <div class="flex justify-center my-2 md:my-0">
@@ -134,16 +134,16 @@ svg {
 }
 
 a {
-  @apply text-slate-600 dark:text-slate-400;
+  @apply text-slate-600 dark:text-slate-300;
   font-size: 18px;
 }
 
 a:hover {
-  @apply text-slate-800 font-semibold
+  @apply text-slate-800 dark:text-white font-semibold
 }
 
 a.active {
-  @apply text-slate-800 font-semibold
+  @apply text-slate-800 dark:text-white font-semibold
 }
 </style>
 
@@ -155,6 +155,7 @@ import { ref, onMounted } from 'vue';
 
 const isDark = ref(false);
 const sidebarOpen = ref(false);
+const currentYear = new Date().getFullYear();
 
 const switchTheme = () => {
   isDark.value = !isDark.value;

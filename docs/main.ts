@@ -4,8 +4,7 @@ import App from './App.vue'
 
 createApp(App).mount('#app')
 
-import { EnchantScrollbar } from '../src/index'
-import { preset_1, preset_2 } from '../src/presets'
+import { EnchantScrollbar, preset_1, preset_2 } from '../src/main'
 
 
 const scrollable = document.querySelector("#enchant-wrapper2");

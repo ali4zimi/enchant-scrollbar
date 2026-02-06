@@ -28,8 +28,8 @@
         </p>
         <div class="code-block" lang="html">
             <code>
-                &lt;div id="enchant-wrapper" style="position: fixed; height: 100%; width: 100%;"&gt; <br>
-                &nbsp;&nbsp;&lt;div id="enchant-content" style="position: absolute; height: 100%; width: 100%;"&gt; <br>
+                &lt;div class="enchant-wrapper" style="position: relative; height: 400px; width: 100%;"&gt; <br>
+                &nbsp;&nbsp;&lt;div class="enchant-content" style="height: 100%; width: 100%;"&gt; <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Your content here&lt;/h1&gt; <br>
                 &nbsp;&nbsp;&lt;/div&gt; <br>
                 &lt;/div&gt;
@@ -42,8 +42,8 @@
 
         <div class="code-block" lang="javascript">
             <code>
-                import EnchantScrollbar from 'enchant-scrollbar'; <br>
-                const enchantWrapper = document.querySelectorAll(".enchant-wrapper"); <br>
+                import { EnchantScrollbar } from 'enchant-scrollbar'; <br>
+                const enchantWrapper = document.querySelector(".enchant-wrapper"); <br>
                 const enchantScrollbar = new EnchantScrollbar(enchantWrapper);
             </code>
         </div>
@@ -72,28 +72,62 @@
 
         <div class="code-block" lang="javascript">
             <code>
-                import EnchantScrollbar from 'enchant-scrollbar'; <br>
-                import { preset_1 } from 'enchant-scrollbar/presets'; <br>
-                const enchantScrollbar = new EnchantScrollbar('#custom-scrollbar', preset_1);
+                import { EnchantScrollbar, preset_1 } from 'enchant-scrollbar'; <br>
+                const wrapper = document.querySelector('.enchant-wrapper'); <br>
+                const enchantScrollbar = new EnchantScrollbar(wrapper, preset_1);
             </code>
         </div>
 
         <h1 id="configuration">Configuration</h1>
         <p>
             Enchant-scrollbar provides a wide range of configuration options to customize the appearance and behavior
-            of your scrollbars. You can adjust the scrollbar's width, height, color, and position, as well as enable or
-            disable specific features like auto-hide and smooth scrolling. Here's an example of how you can configure
-            your scrollbar:
+            of your scrollbars. You can adjust the scrollbar's width, color, opacity, and more. Here's an example:
         </p>
         <div class="code-block" lang="javascript">
             <code>
-                    const enchantScrollbar = new EnchantScrollbar('#custom-scrollbar', { <br>
+                    const enchantScrollbar = new EnchantScrollbar(wrapper, { <br>
                     &nbsp;&nbsp;width: '10px', <br>
-                    &nbsp;&nbsp;opacity: "1", <br>
-                    &nbsp;&nbsp;showArrows: true, <br>
+                    &nbsp;&nbsp;opacity: '0.8', <br>
+                    &nbsp;&nbsp;opacityWhileActive: '1', <br>
+                    &nbsp;&nbsp;trackColor: '#f1f1f1', <br>
+                    &nbsp;&nbsp;thumbColor: '#888', <br>
+                    &nbsp;&nbsp;showArrows: false, <br>
                     });
                 </code>
         </div>
+
+        <h2>All Configuration Options</h2>
+        <table class="config-table">
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>width</td><td>string</td><td>Scrollbar width (e.g., '10px')</td></tr>
+                <tr><td>opacity</td><td>string</td><td>Idle state opacity (e.g., '0.5')</td></tr>
+                <tr><td>widthWhileActive</td><td>string</td><td>Width when scrollbar is active</td></tr>
+                <tr><td>opacityWhileActive</td><td>string</td><td>Opacity when scrollbar is active</td></tr>
+                <tr><td>zIndex</td><td>string?</td><td>CSS z-index for scrollbar wrapper</td></tr>
+                <tr><td>trackColor</td><td>string</td><td>Background color of the track</td></tr>
+                <tr><td>trackWidth</td><td>string?</td><td>Width of the track</td></tr>
+                <tr><td>trackBorderRadius</td><td>string?</td><td>Border radius of the track</td></tr>
+                <tr><td>trackColorWhileActive</td><td>string</td><td>Track color when active</td></tr>
+                <tr><td>trackBorderRadiusWhileActive</td><td>string?</td><td>Track border radius when active</td></tr>
+                <tr><td>thumbColor</td><td>string</td><td>Color of the scrollbar thumb</td></tr>
+                <tr><td>thumbWidth</td><td>string?</td><td>Width of the thumb</td></tr>
+                <tr><td>thumbBorderRadius</td><td>string?</td><td>Border radius of the thumb</td></tr>
+                <tr><td>thumbColorWhileActive</td><td>string?</td><td>Thumb color when active</td></tr>
+                <tr><td>thumbBorderRadiusWhileActive</td><td>string?</td><td>Thumb border radius when active</td></tr>
+                <tr><td>showArrows</td><td>boolean</td><td>Show navigation arrows</td></tr>
+                <tr><td>showArrowsWhileActive</td><td>boolean</td><td>Show arrows only when active</td></tr>
+                <tr><td>arrowsColor</td><td>string?</td><td>Color of arrow icons</td></tr>
+                <tr><td>arrowsWidth</td><td>string?</td><td>Width of arrow buttons</td></tr>
+                <tr><td>arrowsHeight</td><td>string?</td><td>Height of arrow buttons</td></tr>
+            </tbody>
+        </table>
 
         <h1 id="contributing">Contributing</h1>
         <p>
