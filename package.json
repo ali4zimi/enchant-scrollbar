@@ -11,6 +11,10 @@
     ".": {
       "import": "./dist/enchant-scrollbar.js",
       "require": "./dist/enchant-scrollbar.umd.js"
+    },
+    "./presets": {
+      "import": "./dist/enchant-scrollbar.js",
+      "require": "./dist/enchant-scrollbar.umd.js"
     }
   },
   "scripts": {
